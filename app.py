@@ -14,6 +14,12 @@ def load_resources():
     with open("chunks.pkl", "rb") as f:
         chunks = pickle.load(f)
     return model, index, chunks
+#def load_resources():
+    model = SentenceTransformer("all-MiniLM-L6-v2")
+    index = faiss.read_index("vector.index")
+    with open("chunks.pkl", "rb") as f:
+        chunks = pickle.load(f)                                                  
+    return model, index, chunks
 
 def search_answer(query, model, index, chunks, top_k=5):
     """
